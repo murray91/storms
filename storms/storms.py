@@ -153,6 +153,8 @@ def stormToDfs0(filename, stormname, dt, values,
 
     nt = len(values)
     storm_data = np.array(values)
+
+    # setup dfs0 dataset
     ds = Dataset(
         data=[storm_data],
         time=pd.date_range(start=starttime,
@@ -161,6 +163,8 @@ def stormToDfs0(filename, stormname, dt, values,
         items=[ItemInfo(stormname, EUMType.Rainfall_Intensity,
                         EUMUnit.mm_per_hour)]
     )
+
+    # write to dfs0
     dfs = Dfs0()
     dfs.write(filename,
               data=ds,

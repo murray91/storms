@@ -8,7 +8,7 @@ def read(fname):
 
 setup(
     name="Storms",
-    version="0.0.1",
+    version="1.0.0",
     author="Ryan Murray",
     author_email="ryanwaltermurray@gmail.com",
     description=("Creates design storms."),

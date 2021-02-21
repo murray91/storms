@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "C:\\Users\\ryanw\\miniconda3\\envs\\misc\\python.exe"
+    "python.pythonPath": "C:\\Users\\ryanw\\miniconda3\\envs\\misc\\python.exe",
+    "jupyter.jupyterServerType": "local"
 }

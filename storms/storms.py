@@ -50,7 +50,8 @@ def getABC(durations, intensities):
 
 def getABC_lsq(durations, intensities):
     """Calculate IDF ABC parameters based on set of durations and intensities.
-       Uses a different method than getABC
+       Uses a different method than getABC.
+       NOTE: IT IS NOT IMPLEMENTED, BUT CODE IS IN COMMENTS.
 
     Args:
         durations: an array of the durations. Unit: minutes
@@ -61,8 +62,24 @@ def getABC_lsq(durations, intensities):
 
     """
 
-    X = np.log(durations)
-    Y = np.log(intensities)
+    #from sklearn.linear_model import LinearRegression
+    #from scipy.optimize import minimize
+
+    #def linear_reg(b, durations, intensities):
+    #    X = np.log(durations+b).reshape((-1,1))
+    #    Y = np.log(intensities)
+    #    model = LinearRegression()
+    #    model.fit(X,Y)
+    #    return 1 - model.score(X,Y)
+
+    #res = minimize(linear_reg, 5, (durations, intensities))
+    #b = res.x[0]
+    #X = np.log(durations+b).reshape((-1,1))
+    #Y = np.log(intensities)
+    #model = LinearRegression()
+    #model.fit(X,Y)
+    #a = np.exp(model.intercept_)
+    #c = -model.coef_[0]
 
     return 1
 

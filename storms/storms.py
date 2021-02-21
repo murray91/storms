@@ -48,6 +48,24 @@ def getABC(durations, intensities):
 
     return (popt[0], popt[1], popt[2])
 
+def getABC_lsq(durations, intensities):
+    """Calculate IDF ABC parameters based on set of durations and intensities.
+       Uses a different method than getABC
+
+    Args:
+        durations: an array of the durations. Unit: minutes
+        intensities: an array of the intensities. Unit: mm/hr
+
+    Returns:
+        Returns A, B, C as a tuple.
+
+    """
+
+    X = np.log(durations)
+    Y = np.log(intensities)
+
+    return 1
+
 
 def ib(tb, r, a, b, c):
     """Chicago design storm equation - intensity before peak.

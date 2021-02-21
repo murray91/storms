@@ -1,0 +1,224 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>storms package &#8212; Storms 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="storms-package">
+<h1>storms package<a class="headerlink" href="#storms-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-storms.storms">
+<span id="storms-storms-module"></span><h2>storms.storms module<a class="headerlink" href="#module-storms.storms" title="Permalink to this headline">¶</a></h2>
+<p>Create design storms for modelling in MIKE software.</p>
+<p>Given IDF data, this package lets you create Chicago design storms. Load in the
+IDF data. Interpret it to the IDF function. Create the Chicago design storm and
+export it to .dfs0 format.</p>
+<dl class="py function">
+<dt id="storms.storms.getABC">
+<code class="sig-prename descclassname">storms.storms.</code><code class="sig-name descname">getABC</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">durations</span></em>, <em class="sig-param"><span class="n">intensities</span></em><span class="sig-paren">)</span><a class="headerlink" href="#storms.storms.getABC" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate IDF ABC parameters based on set of durations and intensities.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>durations: an array of the durations. Unit: minutes
+intensities: an array of the intensities. Unit: mm/hr</p>
+</dd>
+<dt>Returns:</dt><dd><p>Returns A, B, C as a tuple.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="storms.storms.i">
+<code class="sig-prename descclassname">storms.storms.</code><code class="sig-name descname">i</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">t</span></em>, <em class="sig-param"><span class="n">T</span></em>, <em class="sig-param"><span class="n">r</span></em>, <em class="sig-param"><span class="n">a</span></em>, <em class="sig-param"><span class="n">b</span></em>, <em class="sig-param"><span class="n">c</span></em><span class="sig-paren">)</span><a class="headerlink" href="#storms.storms.i" title="Permalink to this definition">¶</a></dt>
+<dd><p>Chicago design storm equation - intensity. Uses ia and ib functions.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>t: time in minutes from storm eginning
+T: total storm duration in minutes
+r: time to peak ratio (peak time divided by total duration)
+a: IDF A parameter - can be calculated from getABC
+b: IDF B parameter - can be calculated from getABC
+c: IDF C parameter  - can be calculated from getABC</p>
+</dd>
+<dt>Returns:</dt><dd><p>Returns intensity in mm/hr.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="storms.storms.ia">
+<code class="sig-prename descclassname">storms.storms.</code><code class="sig-name descname">ia</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ta</span></em>, <em class="sig-param"><span class="n">r</span></em>, <em class="sig-param"><span class="n">a</span></em>, <em class="sig-param"><span class="n">b</span></em>, <em class="sig-param"><span class="n">c</span></em><span class="sig-paren">)</span><a class="headerlink" href="#storms.storms.ia" title="Permalink to this definition">¶</a></dt>
+<dd><p>Chicago design storm equation - intensity after peak. Helper for i function.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>ta: time after peak in minutes (measured from peak towards end)
+r: time to peak ratio (peak time divided by total duration)
+a: IDF A parameter - can be calculated from getABC
+b: IDF B parameter - can be calculated from getABC
+c: IDF C parameter  - can be calculated from getABC</p>
+</dd>
+<dt>Returns:</dt><dd><p>Returns intensity in mm/hr.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="storms.storms.ib">
+<code class="sig-prename descclassname">storms.storms.</code><code class="sig-name descname">ib</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tb</span></em>, <em class="sig-param"><span class="n">r</span></em>, <em class="sig-param"><span class="n">a</span></em>, <em class="sig-param"><span class="n">b</span></em>, <em class="sig-param"><span class="n">c</span></em><span class="sig-paren">)</span><a class="headerlink" href="#storms.storms.ib" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Chicago design storm equation - intensity before peak.</dt><dd><p>Helper for i function.</p>
+</dd>
+<dt>Args:</dt><dd><p>tb: time before peak in minutes (measured from peak towards beginning)
+r: time to peak ratio (peak time divided by total duration)
+a: IDF A parameter - can be calculated from getABC
+b: IDF B parameter - can be calculated from getABC
+c: IDF C parameter  - can be calculated from getABC</p>
+</dd>
+<dt>Returns:</dt><dd><p>Returns intensity in mm/hr.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="storms.storms.idf">
+<code class="sig-prename descclassname">storms.storms.</code><code class="sig-name descname">idf</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">duration</span></em>, <em class="sig-param"><span class="n">A</span></em>, <em class="sig-param"><span class="n">B</span></em>, <em class="sig-param"><span class="n">C</span></em><span class="sig-paren">)</span><a class="headerlink" href="#storms.storms.idf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate intensity for specified duration given IDF parameters A, B, and C.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>duration: duration to calculate intensity for. Unit: minutes
+A: constant A in equation i = A / (duration + B)**C.
+B: constant B in equation i = A / (duration + B)**C.
+C: constant C in equation i = A / (duration + B)**C.</p>
+</dd>
+<dt>Returns:</dt><dd><p>Returns intensity in mm/hr.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="storms.storms.makeChicagoStorm">
+<code class="sig-prename descclassname">storms.storms.</code><code class="sig-name descname">makeChicagoStorm</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">T</span></em>, <em class="sig-param"><span class="n">r</span></em>, <em class="sig-param"><span class="n">dt</span></em>, <em class="sig-param"><span class="n">a</span></em>, <em class="sig-param"><span class="n">b</span></em>, <em class="sig-param"><span class="n">c</span></em><span class="sig-paren">)</span><a class="headerlink" href="#storms.storms.makeChicagoStorm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Makes a chicago design storm.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>T: total storm duration in minutes
+r: time to peak ration (peak time divided by total duration)
+dt: time step in minutes
+a: IDF A parameter - can be calculated from getABC
+b: IDF B parameter - can be calculated from getABC
+c: IDF C parameter  - can be calculated from getABC</p>
+</dd>
+<dt>Returns:</dt><dd><p>Returns tuple of (dt, array of intensities).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="storms.storms.stormToDfs0">
+<code class="sig-prename descclassname">storms.storms.</code><code class="sig-name descname">stormToDfs0</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span></em>, <em class="sig-param"><span class="n">stormname</span></em>, <em class="sig-param"><span class="n">dt</span></em>, <em class="sig-param"><span class="n">values</span></em>, <em class="sig-param"><span class="n">starttime</span><span class="o">=</span><span class="default_value">datetime.datetime(2021, 1, 1, 12, 0)</span></em><span class="sig-paren">)</span><a class="headerlink" href="#storms.storms.stormToDfs0" title="Permalink to this definition">¶</a></dt>
+<dd><p>Outputs a storm to dfs0 format.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>filename: absolute path to dfs0 to be created
+stormname: string of name to give to data in dfs0
+dt: time step in minutes
+values: array of storm intensities in mm/hr
+starttime: datetime object of when storm should start</p>
+</dd>
+<dt>Returns:</dt><dd><p>No return value, just creates dfs0.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-storms">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-storms" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Storms</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Ryan W. Murray.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.4.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/storms.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

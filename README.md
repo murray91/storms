@@ -1,2 +1,1 @@
-# storms
-For creating design storms.
+permalink: /index.html

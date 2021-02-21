@@ -12,17 +12,17 @@
 #
 import os
 import sys
-sys.path.insert(0, os.path.abspath('../storms/'))
+sys.path.insert(0, os.path.abspath('../../'))
 
 
 # -- Project information -----------------------------------------------------
 
 project = 'Storms'
-copyright = '2021, Ryan Walter Murray'
-author = 'Ryan Walter Murray'
+copyright = '2021, Ryan W. Murray'
+author = 'Ryan W. Murray'
 
 # The full version, including alpha/beta/rc tags
-release = '0.0.1'
+release = '1.0'
 
 
 # -- General configuration ---------------------------------------------------
@@ -32,7 +32,8 @@ release = '0.0.1'
 # ones.
 extensions = [
     'sphinx.ext.autodoc',
-    'sphinx.ext.napoleon'
+    'sphinx.ext.githubpages',
+    'recommonmark',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -41,7 +42,7 @@ templates_path = ['_templates']
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
+exclude_patterns = []
 
 
 # -- Options for HTML output -------------------------------------------------
@@ -55,3 +56,6 @@ html_theme = 'alabaster'
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+
+
+# -- Extension configuration -------------------------------------------------

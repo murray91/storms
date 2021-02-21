@@ -40,13 +40,22 @@ def getABC(durations, intensities):
         intensities: an array of the intensities. Unit: mm/hr
 
     Returns:
-        Returns A, B, C as a tuple.
+        Returns A, B, C, r_squared as a tuple.
 
     """
 
+    # get A, B, C
     popt, pcov = curve_fit(idf, durations, intensities)
+    A, B, C = popt[0], popt[1], popt[2]
 
-    return (popt[0], popt[1], popt[2])
+    # calculate r squared
+    residuals = intensities - idf(durations, A, B, C)
+    ss_res = np.sum(residuals**2)
+    ss_tot = np.sum((intensities-np.mean(intensities))**2)
+    r_squared = 1 - (ss_res / ss_tot)
+
+    return (A, B, C, r_squared)
+
 
 def getABC_lsq(durations, intensities):
     """Calculate IDF ABC parameters based on set of durations and intensities.
@@ -62,24 +71,24 @@ def getABC_lsq(durations, intensities):
 
     """
 
-    #from sklearn.linear_model import LinearRegression
-    #from scipy.optimize import minimize
+    # from sklearn.linear_model import LinearRegression
+    # from scipy.optimize import minimize
 
-    #def linear_reg(b, durations, intensities):
-    #    X = np.log(durations+b).reshape((-1,1))
-    #    Y = np.log(intensities)
-    #    model = LinearRegression()
-    #    model.fit(X,Y)
-    #    return 1 - model.score(X,Y)
+    # def linear_reg(b, durations, intensities):
+    #     X = np.log(durations+b).reshape((-1,1))
+    #     Y = np.log(intensities)
+    #     model = LinearRegression()
+    #     model.fit(X,Y)
+    #     return 1 - model.score(X,Y)
 
-    #res = minimize(linear_reg, 5, (durations, intensities))
-    #b = res.x[0]
-    #X = np.log(durations+b).reshape((-1,1))
-    #Y = np.log(intensities)
-    #model = LinearRegression()
-    #model.fit(X,Y)
-    #a = np.exp(model.intercept_)
-    #c = -model.coef_[0]
+    # res = minimize(linear_reg, 5, (durations, intensities))
+    # b = res.x[0]
+    # X = np.log(durations+b).reshape((-1,1))
+    # Y = np.log(intensities)
+    # model = LinearRegression()
+    # model.fit(X,Y)
+    # a = np.exp(model.intercept_)
+    # c = -model.coef_[0]
 
     return 1
 
@@ -171,7 +180,8 @@ def makeChicagoStorm(T, r, dt, a, b, c):
 
 
 def stormToDfs0(filename, stormname, dt, values,
-                starttime=datetime(2021, 1, 1, 12)):
+                starttime=datetime(2021, 1, 1, 12),
+                endtime=None):
     """Outputs a storm to dfs0 format.
 
     Args:
@@ -180,6 +190,8 @@ def stormToDfs0(filename, stormname, dt, values,
         dt: time step in minutes
         values: array of storm intensities in mm/hr
         starttime: datetime object of when storm should start
+        endtime: datetime object of when storm should end
+                 (autofills zeros beyond data)
 
     Returns:
         No return value, just creates dfs0.
@@ -189,11 +201,22 @@ def stormToDfs0(filename, stormname, dt, values,
     nt = len(values)
     storm_data = np.array(values)
 
+    # if not specified, calculated end time based on storm duration
+    # otherwise, adds zeroes to storm_data until the end specified
+    if endtime is None:
+        endtime = (starttime+timedelta(minutes=(nt-1)*dt))
+    else:
+        total_secs = (endtime - starttime).total_seconds()
+        timesteps_to_add = int(total_secs / 60 / dt - nt) + 1
+        for i in range(0, timesteps_to_add):
+            storm_data = np.append(storm_data, 0)
+        nt = len(storm_data)
+
     # setup dfs0 dataset
     ds = Dataset(
         data=[storm_data],
         time=pd.date_range(start=starttime,
-                           end=(starttime+timedelta(minutes=(nt-1)*dt)),
+                           end=endtime,
                            periods=nt),
         items=[ItemInfo(stormname, EUMType.Rainfall_Intensity,
                         EUMUnit.mm_per_hour)]

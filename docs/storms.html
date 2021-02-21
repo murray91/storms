@@ -54,6 +54,27 @@ export it to .dfs0 format.</p>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns A, B, C, r_squared as a tuple.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="storms.storms.getABC_lsq">
+<code class="sig-prename descclassname">storms.storms.</code><code class="sig-name descname">getABC_lsq</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">durations</span></em>, <em class="sig-param"><span class="n">intensities</span></em><span class="sig-paren">)</span><a class="headerlink" href="#storms.storms.getABC_lsq" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Calculate IDF ABC parameters based on set of durations and intensities.</dt><dd><p>Uses a different method than getABC.
+NOTE: IT IS NOT IMPLEMENTED, BUT CODE IS IN COMMENTS.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>durations</strong> – an array of the durations. Unit: minutes</p></li>
+<li><p><strong>intensities</strong> – an array of the intensities. Unit: mm/hr</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
 <dd class="field-even"><p>Returns A, B, C as a tuple.</p>
 </dd>
 </dl>
@@ -165,7 +186,7 @@ export it to .dfs0 format.</p>
 
 <dl class="py function">
 <dt id="storms.storms.stormToDfs0">
-<code class="sig-prename descclassname">storms.storms.</code><code class="sig-name descname">stormToDfs0</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span></em>, <em class="sig-param"><span class="n">stormname</span></em>, <em class="sig-param"><span class="n">dt</span></em>, <em class="sig-param"><span class="n">values</span></em>, <em class="sig-param"><span class="n">starttime</span><span class="o">=</span><span class="default_value">datetime.datetime(2021, 1, 1, 12, 0)</span></em><span class="sig-paren">)</span><a class="headerlink" href="#storms.storms.stormToDfs0" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">storms.storms.</code><code class="sig-name descname">stormToDfs0</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span></em>, <em class="sig-param"><span class="n">stormname</span></em>, <em class="sig-param"><span class="n">dt</span></em>, <em class="sig-param"><span class="n">values</span></em>, <em class="sig-param"><span class="n">starttime</span><span class="o">=</span><span class="default_value">datetime.datetime(2021, 1, 1, 12, 0)</span></em>, <em class="sig-param"><span class="n">endtime</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#storms.storms.stormToDfs0" title="Permalink to this definition">¶</a></dt>
 <dd><p>Outputs a storm to dfs0 format.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -175,6 +196,8 @@ export it to .dfs0 format.</p>
 <li><p><strong>dt</strong> – time step in minutes</p></li>
 <li><p><strong>values</strong> – array of storm intensities in mm/hr</p></li>
 <li><p><strong>starttime</strong> – datetime object of when storm should start</p></li>
+<li><p><strong>endtime</strong> – datetime object of when storm should end
+(autofills zeros beyond data)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>

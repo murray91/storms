@@ -8,7 +8,7 @@ def read(fname):
 
 setup(
     name="Storms",
-    version="1.0.0",
+    version="1.1.0",
     author="Ryan Murray",
     author_email="ryanwaltermurray@gmail.com",
     description=("Creates design storms."),
@@ -21,4 +21,10 @@ setup(
         "Topic :: Scientific/Engineering :: Hydrology",
         "License :: OSI Approved :: MIT License",
     ],
+    install_requires=[
+   'numpy',
+   'scipy',
+   'pandas',
+   'mikeio'
+    ]
 )

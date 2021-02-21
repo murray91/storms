@@ -14,6 +14,7 @@
     <script src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="storms" href="modules.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -45,11 +46,15 @@ export it to .dfs0 format.</p>
 <dt id="storms.storms.getABC">
 <code class="sig-prename descclassname">storms.storms.</code><code class="sig-name descname">getABC</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">durations</span></em>, <em class="sig-param"><span class="n">intensities</span></em><span class="sig-paren">)</span><a class="headerlink" href="#storms.storms.getABC" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate IDF ABC parameters based on set of durations and intensities.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>durations: an array of the durations. Unit: minutes
-intensities: an array of the intensities. Unit: mm/hr</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>durations</strong> – an array of the durations. Unit: minutes</p></li>
+<li><p><strong>intensities</strong> – an array of the intensities. Unit: mm/hr</p></li>
+</ul>
 </dd>
-<dt>Returns:</dt><dd><p>Returns A, B, C as a tuple.</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns A, B, C as a tuple.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -58,15 +63,19 @@ intensities: an array of the intensities. Unit: mm/hr</p>
 <dt id="storms.storms.i">
 <code class="sig-prename descclassname">storms.storms.</code><code class="sig-name descname">i</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">t</span></em>, <em class="sig-param"><span class="n">T</span></em>, <em class="sig-param"><span class="n">r</span></em>, <em class="sig-param"><span class="n">a</span></em>, <em class="sig-param"><span class="n">b</span></em>, <em class="sig-param"><span class="n">c</span></em><span class="sig-paren">)</span><a class="headerlink" href="#storms.storms.i" title="Permalink to this definition">¶</a></dt>
 <dd><p>Chicago design storm equation - intensity. Uses ia and ib functions.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>t: time in minutes from storm eginning
-T: total storm duration in minutes
-r: time to peak ratio (peak time divided by total duration)
-a: IDF A parameter - can be calculated from getABC
-b: IDF B parameter - can be calculated from getABC
-c: IDF C parameter  - can be calculated from getABC</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t</strong> – time in minutes from storm eginning</p></li>
+<li><p><strong>T</strong> – total storm duration in minutes</p></li>
+<li><p><strong>r</strong> – time to peak ratio (peak time divided by total duration)</p></li>
+<li><p><strong>a</strong> – IDF A parameter - can be calculated from getABC</p></li>
+<li><p><strong>b</strong> – IDF B parameter - can be calculated from getABC</p></li>
+<li><p><strong>c</strong> – IDF C parameter  - can be calculated from getABC</p></li>
+</ul>
 </dd>
-<dt>Returns:</dt><dd><p>Returns intensity in mm/hr.</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns intensity in mm/hr.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -75,14 +84,18 @@ c: IDF C parameter  - can be calculated from getABC</p>
 <dt id="storms.storms.ia">
 <code class="sig-prename descclassname">storms.storms.</code><code class="sig-name descname">ia</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ta</span></em>, <em class="sig-param"><span class="n">r</span></em>, <em class="sig-param"><span class="n">a</span></em>, <em class="sig-param"><span class="n">b</span></em>, <em class="sig-param"><span class="n">c</span></em><span class="sig-paren">)</span><a class="headerlink" href="#storms.storms.ia" title="Permalink to this definition">¶</a></dt>
 <dd><p>Chicago design storm equation - intensity after peak. Helper for i function.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>ta: time after peak in minutes (measured from peak towards end)
-r: time to peak ratio (peak time divided by total duration)
-a: IDF A parameter - can be calculated from getABC
-b: IDF B parameter - can be calculated from getABC
-c: IDF C parameter  - can be calculated from getABC</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ta</strong> – time after peak in minutes (measured from peak towards end)</p></li>
+<li><p><strong>r</strong> – time to peak ratio (peak time divided by total duration)</p></li>
+<li><p><strong>a</strong> – IDF A parameter - can be calculated from getABC</p></li>
+<li><p><strong>b</strong> – IDF B parameter - can be calculated from getABC</p></li>
+<li><p><strong>c</strong> – IDF C parameter  - can be calculated from getABC</p></li>
+</ul>
 </dd>
-<dt>Returns:</dt><dd><p>Returns intensity in mm/hr.</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns intensity in mm/hr.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -93,13 +106,19 @@ c: IDF C parameter  - can be calculated from getABC</p>
 <dd><dl class="simple">
 <dt>Chicago design storm equation - intensity before peak.</dt><dd><p>Helper for i function.</p>
 </dd>
-<dt>Args:</dt><dd><p>tb: time before peak in minutes (measured from peak towards beginning)
-r: time to peak ratio (peak time divided by total duration)
-a: IDF A parameter - can be calculated from getABC
-b: IDF B parameter - can be calculated from getABC
-c: IDF C parameter  - can be calculated from getABC</p>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tb</strong> – time before peak in minutes (measured from peak towards beginning)</p></li>
+<li><p><strong>r</strong> – time to peak ratio (peak time divided by total duration)</p></li>
+<li><p><strong>a</strong> – IDF A parameter - can be calculated from getABC</p></li>
+<li><p><strong>b</strong> – IDF B parameter - can be calculated from getABC</p></li>
+<li><p><strong>c</strong> – IDF C parameter  - can be calculated from getABC</p></li>
+</ul>
 </dd>
-<dt>Returns:</dt><dd><p>Returns intensity in mm/hr.</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns intensity in mm/hr.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -108,13 +127,17 @@ c: IDF C parameter  - can be calculated from getABC</p>
 <dt id="storms.storms.idf">
 <code class="sig-prename descclassname">storms.storms.</code><code class="sig-name descname">idf</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">duration</span></em>, <em class="sig-param"><span class="n">A</span></em>, <em class="sig-param"><span class="n">B</span></em>, <em class="sig-param"><span class="n">C</span></em><span class="sig-paren">)</span><a class="headerlink" href="#storms.storms.idf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate intensity for specified duration given IDF parameters A, B, and C.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>duration: duration to calculate intensity for. Unit: minutes
-A: constant A in equation i = A / (duration + B)**C.
-B: constant B in equation i = A / (duration + B)**C.
-C: constant C in equation i = A / (duration + B)**C.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>duration</strong> – duration to calculate intensity for. Unit: minutes</p></li>
+<li><p><strong>A</strong> – constant A in equation i = A / (duration + B)**C.</p></li>
+<li><p><strong>B</strong> – constant B in equation i = A / (duration + B)**C.</p></li>
+<li><p><strong>C</strong> – constant C in equation i = A / (duration + B)**C.</p></li>
+</ul>
 </dd>
-<dt>Returns:</dt><dd><p>Returns intensity in mm/hr.</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns intensity in mm/hr.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -123,15 +146,19 @@ C: constant C in equation i = A / (duration + B)**C.</p>
 <dt id="storms.storms.makeChicagoStorm">
 <code class="sig-prename descclassname">storms.storms.</code><code class="sig-name descname">makeChicagoStorm</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">T</span></em>, <em class="sig-param"><span class="n">r</span></em>, <em class="sig-param"><span class="n">dt</span></em>, <em class="sig-param"><span class="n">a</span></em>, <em class="sig-param"><span class="n">b</span></em>, <em class="sig-param"><span class="n">c</span></em><span class="sig-paren">)</span><a class="headerlink" href="#storms.storms.makeChicagoStorm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Makes a chicago design storm.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>T: total storm duration in minutes
-r: time to peak ration (peak time divided by total duration)
-dt: time step in minutes
-a: IDF A parameter - can be calculated from getABC
-b: IDF B parameter - can be calculated from getABC
-c: IDF C parameter  - can be calculated from getABC</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>T</strong> – total storm duration in minutes</p></li>
+<li><p><strong>r</strong> – time to peak ration (peak time divided by total duration)</p></li>
+<li><p><strong>dt</strong> – time step in minutes</p></li>
+<li><p><strong>a</strong> – IDF A parameter - can be calculated from getABC</p></li>
+<li><p><strong>b</strong> – IDF B parameter - can be calculated from getABC</p></li>
+<li><p><strong>c</strong> – IDF C parameter  - can be calculated from getABC</p></li>
+</ul>
 </dd>
-<dt>Returns:</dt><dd><p>Returns tuple of (dt, array of intensities).</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns tuple of (dt, array of intensities).</p>
 </dd>
 </dl>
 </dd></dl>
@@ -140,14 +167,18 @@ c: IDF C parameter  - can be calculated from getABC</p>
 <dt id="storms.storms.stormToDfs0">
 <code class="sig-prename descclassname">storms.storms.</code><code class="sig-name descname">stormToDfs0</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span></em>, <em class="sig-param"><span class="n">stormname</span></em>, <em class="sig-param"><span class="n">dt</span></em>, <em class="sig-param"><span class="n">values</span></em>, <em class="sig-param"><span class="n">starttime</span><span class="o">=</span><span class="default_value">datetime.datetime(2021, 1, 1, 12, 0)</span></em><span class="sig-paren">)</span><a class="headerlink" href="#storms.storms.stormToDfs0" title="Permalink to this definition">¶</a></dt>
 <dd><p>Outputs a storm to dfs0 format.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>filename: absolute path to dfs0 to be created
-stormname: string of name to give to data in dfs0
-dt: time step in minutes
-values: array of storm intensities in mm/hr
-starttime: datetime object of when storm should start</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> – absolute path to dfs0 to be created</p></li>
+<li><p><strong>stormname</strong> – string of name to give to data in dfs0</p></li>
+<li><p><strong>dt</strong> – time step in minutes</p></li>
+<li><p><strong>values</strong> – array of storm intensities in mm/hr</p></li>
+<li><p><strong>starttime</strong> – datetime object of when storm should start</p></li>
+</ul>
 </dd>
-<dt>Returns:</dt><dd><p>No return value, just creates dfs0.</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>No return value, just creates dfs0.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -175,11 +206,21 @@ starttime: datetime object of when storm should start</p>
 
 
 <h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">storms</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">storms package</a></li>
+</ul>
+</li>
+</ul>
 
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">storms</a><ul>
+      <li>Previous: <a href="modules.html" title="previous chapter">storms</a></li>
+  </ul></li>
   </ul></li>
 </ul>
 </div>

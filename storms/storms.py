@@ -218,7 +218,7 @@ def stormToDfs0(filename, stormname, dt, values,
         time=pd.date_range(start=starttime,
                            end=endtime,
                            periods=nt),
-        items=[ItemInfo(stormname, EUMType.Rainfall_Intensity,
+        items=[ItemInfo(stormname, EUMType.Precipitation_Rate,
                         EUMUnit.mm_per_hour)]
     )
 
